@@ -1,16 +1,25 @@
 import React from "react";
-import Autocomplete from "./AutoComplete";
 
-const AutoCompleteItem = () => {
+const AutoCompleteItem = ({
+  name,
+  capital,
+  region,
+  flag,
+  onSelectItem,
+  isHighlighted,
+}) => {
   return (
-    <li className={`list-group-item`}>
+    <li
+      className={`list-group-item ${isHighlighted ? "active highlighted" : ""}`}
+      onClick={onSelectItem}
+    >
       <div className="row">
         <div className="col text-left">
           <p className="mb-0 font-weight-bold line-height-1">
-            Country Name <img src="" alt="" style={{ width: "30px" }} />
+            {name} <img src={flag} alt="" style={{ width: "30px" }} />
           </p>
-          <p className="mb-0 badge badge-primary">Continent</p>
-          <p className="mb-0 ml-2 badge badge-secondary">capital</p>
+          <p className="mb-0 badge badge-primary">{region}</p>
+          <p className="mb-0 ml-2 badge badge-secondary">{capital}</p>
         </div>
       </div>
     </li>
